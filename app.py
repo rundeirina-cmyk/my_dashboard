@@ -1,11 +1,6 @@
-from flask import Flask
-import os
-
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    return "Hello! Streamlit is running on port 80"
+import streamlit.web.cli as stcli
+import sys
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    sys.argv = ["streamlit", "run", "dashboard.py", "--server.port", "80", "--server.address", "0.0.0.0"]
+    sys.exit(stcli.main())
